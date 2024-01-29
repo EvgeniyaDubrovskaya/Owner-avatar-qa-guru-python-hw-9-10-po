@@ -74,6 +74,25 @@ class RegistrationPage:
         browser.element('#submit').press_enter()
         return self
 
+    def register(self, user: User):
+        self.fill_first_name(user.first_name)
+        self.fill_last_name(user.last_name)
+        self.fill_email(user.email)
+        self.choose_sex(user.sex.name)
+        self.fill_phone(user.phone)
+        self.fill_day_of_birth(
+            str(user.date_of_birth.year),
+            str(user.date_of_birth.strftime("%B")),
+            str(user.date_of_birth.day))
+        self.fill_subject(user.subject)
+        self.select_hobby(user.hobby)
+        self.add_picture(user.picture)
+        self.fill_address(user.address)
+        self.fill_state(user.state)
+        self.fill_city(user.city)
+        self.submit_form()
+        return self
+
     def should_have_registered_user_data(self, full_fio, email, sex, phone, date_of_birth, subject, hobby, file,
                                          address, state_city):
         browser.element('.table').all('td').even.should(have.exact_texts(
@@ -90,30 +109,11 @@ class RegistrationPage:
         ))
         return self
 
-    def register(self, user: User):
-        self.fill_first_name(user.first_name)
-        self.fill_last_name(user.last_name)
-        self.fill_email(user.email)
-        self.choose_sex(user.sex)
-        self.fill_phone(user.phone)
-        self.fill_day_of_birth(
-            str(user.date_of_birth.year),
-            str(user.date_of_birth.strftime("%B")),
-            str(user.date_of_birth.day))
-        self.fill_subject(user.subject)
-        self.select_hobby(user.hobby)
-        self.add_picture(user.picture)
-        self.fill_address(user.address)
-        self.fill_state(user.state)
-        self.fill_city(user.city)
-        self.submit_form()
-        return self
-
     def should_have_registered(self, user):
         self.should_have_registered_user_data(
-            full_fio=f'{user.first_name} {user.last_name}',
+            full_fio=user.first_last_name(),
             email=user.email,
-            sex=user.sex,
+            sex=user.sex.name,
             phone=user.phone,
             date_of_birth=f'{user.date_of_birth.strftime("%d %B")},{user.date_of_birth.year}',
             subject=user.subject,
