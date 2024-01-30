@@ -10,5 +10,3 @@ def test_registrate_simple_user_success():
 
     app.simple_registration_page.register(user)
     app.simple_registration_page.should_have_registered_simple_user(user)
-
-

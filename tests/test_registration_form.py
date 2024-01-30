@@ -16,5 +16,3 @@ def test_registrate_user_success():
     registration_page.register(user)
 
     registration_page.should_have_registered(user)
-
-
