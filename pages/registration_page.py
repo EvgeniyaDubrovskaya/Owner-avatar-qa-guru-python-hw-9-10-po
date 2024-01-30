@@ -43,7 +43,7 @@ class RegistrationPage:
         return self
 
     def select_hobby(self, value):
-        browser.all('[for^=hobbies-checkbox]').element_by(have.exact_text('Reading')).click()
+        browser.all('[for^=hobbies-checkbox]').element_by(have.exact_text(value)).click()
         return self
 
     def fill_address(self, value):

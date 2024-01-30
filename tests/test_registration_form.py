@@ -1,5 +1,3 @@
-from selene import browser, have, command
-from helpers import resources
 from pages.registration_page import RegistrationPage
 
 
@@ -34,17 +32,3 @@ def test_registrate_user_success():
         '45 Current Address',
         'NCR Delhi'
     )
-
-    # registration_page.registered_user_data.should(have.exact_texts(
-    #     'Jane Doe',
-    #     'jane@doe.su',
-    #     'Female',
-    #     '1234567890',
-    #     '10 January,1990',
-    #     'Maths',
-    #     'Reading',
-    #     'windy_hill.jpg',
-    #     '45 Current Address',
-    #     'NCR Delhi'
-    # ))
-

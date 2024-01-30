@@ -11,4 +11,3 @@ def browser_management():
     yield
 
     browser.quit()
-
