@@ -1,5 +1,4 @@
 from datetime import date
-from selene import have
 
 from models.sex import Sex
 from models.user import User
@@ -18,5 +17,3 @@ def test_registrate_user_success():
     registration_page.register(user)
 
     registration_page.should_have_registered(user)
-
-
