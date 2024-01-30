@@ -1,6 +1,4 @@
 from datetime import date
-from selene import have
-
 from models.sex import Sex
 from models.user import User
 from pages.registration_page import RegistrationPage
